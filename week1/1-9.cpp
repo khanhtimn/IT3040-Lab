@@ -14,12 +14,30 @@
  * */
 
 #include <iostream>
+#include <vector>
 
 int main()
 {
     int n;
     std::cin >> n;
 
+    std::vector<int> arr(n);
+
+    for (int i = 0; i < n; i++) {
+        std::cin >> arr[i];
+    }
+    for (int i = 0; i < n; i++) {
+        int j = i;
+        while (j < n) {
+            for (int k = i; k <= j; k++) {
+                std::cout << arr[k] << " ";
+            }
+            std::cout << std::endl;
+            j++;
+        }
+    }
+
     std::cout << n;
+
     return 0;
 }
