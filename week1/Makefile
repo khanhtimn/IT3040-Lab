@@ -25,7 +25,4 @@ all: $(EXECS)
 $(TARGET_DIR)$(DIRSEP)%$(EXE): %.cpp
 	$(CC) $(CFLAGS) $< -o "$(TARGET_ABS)$(DIRSEP)$*$(EXE)"
 
-.PHONY: all clean
-
-clean:
-	$(RM) "$(TARGET_DIR)"
+.PHONY: all

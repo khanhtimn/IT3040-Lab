@@ -19,7 +19,4 @@ $(WEEKS):
 	@echo "Building targets for $@..."
 	$(MAKE) -C $@ TARGET_DIR="$(TARGET_PATH)$(@:week%=%)"
 
-.PHONY: all $(WEEKS) clean
-
-clean:
-	$(RM) $(TARGET_DIR)
+.PHONY: all $(WEEKS)
