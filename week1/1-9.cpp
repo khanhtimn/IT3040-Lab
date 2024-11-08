@@ -20,6 +20,6 @@ int main()
     int n;
     std::cin >> n;
 
-    printf("%d\n", n);
+    std::cout << n;
     return 0;
 }
