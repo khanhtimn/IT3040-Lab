@@ -36,29 +36,29 @@ Here are the values of x, y, and z:
 Once again, here are the values of x, y, and z:
 125 150 175
 */
-#include <stdio.h>
+#include <iostream>
 
-void add(int* ptr) {
+void add(int* ptr)
+{
     *ptr += 100;
 }
 
-int main() {
-
+int main()
+{
     int x, y, z;
 
-    scanf("%d %d %d", &x, &y, &z);
+    std::cout << "Enter three integers: ";
+    std::cin >> x >> y >> z;
 
-    printf("Here are the values of x, y, and z:\n");
-
-    printf("%d %d %d\n", x, y, z);
+    std::cout << "Here are the values of x, y, and z:\n";
+    std::cout << x << " " << y << " " << z << std::endl;
 
     add(&x);
     add(&y);
     add(&z);
 
-    printf("Once again, here are the values of x, y, and z:\n");
+    std::cout << "Once again, here are the values of x, y, and z:\n";
+    std::cout << x << " " << y << " " << z << std::endl;
 
-    printf("%d %d %d\n", x, y, z);
     return 0;
-
 }

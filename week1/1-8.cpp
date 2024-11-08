@@ -19,29 +19,31 @@
    4 5
    The sum of all even elements is 6
    */
-#include <bits/stdc++.h> 
-using namespace std;
+#include <iostream>
 
-void allocate_mem(int ***mt, int m, int n) {
+void allocate_mem(int*** mt, int m, int n)
+{
     *mt = new int*[m];
 
-    for(int i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++) {
         (*mt)[i] = new int[n];
     }
 }
 
-void free_mem(int **mt, int m) {
-    for(int i = 0; i < m; i++) {
+void free_mem(int** mt, int m)
+{
+    for (int i = 0; i < m; i++) {
         delete[] mt[i];
     }
     delete[] mt;
 }
 
-int sumEven(int **mt, int m, int n) {
+int sumEven(int** mt, int m, int n)
+{
     int sum = 0;
-    for(int i = 0; i < m; i++) {
-        for(int j = 0; j < n; j++) {
-            if(mt[i][j] % 2 == 0) {  
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (mt[i][j] % 2 == 0) {
                 sum += mt[i][j];
             }
         }
@@ -49,30 +51,31 @@ int sumEven(int **mt, int m, int n) {
     return sum;
 }
 
-int main() {
+int main()
+{
     int m, n;
-    int **mt;
+    int** mt;
 
-    printf("Enter m, n = ");
-    scanf("%d %d", &m, &n);
+    std::cout << "Enter m, n = ";
+    std::cin >> m >> n;
 
     allocate_mem(&mt, m, n);
 
-    for(int i = 0; i < m; i++) {
-        for(int j = 0; j < n; j++) {
-            printf("mt[%d][%d] = ", i, j);
-            scanf("%d", &mt[i][j]);
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            std::cout << "mt[" << i << "][" << j << "] = ";
+            std::cin >> mt[i][j];
         }
     }
 
-    for(int i = 0; i < m; i++) {
-        for(int j = 0; j < n; j++) {
-            printf("%d ", mt[i][j]);
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            std::cout << mt[i][j] << " ";
         }
-        printf("\n");
+        std::cout << std::endl;
     }
 
-    printf("The sum of all even elements is %d", sumEven(mt, m, n));
+    std::cout << "The sum of all even elements is " << sumEven(mt, m, n) << std::endl;
 
     free_mem(mt, m);
 

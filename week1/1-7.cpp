@@ -15,51 +15,52 @@
    The sorted array is:
    -2 1 2 9 15
    */
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
 
-void swap(int *a, int *b) {
+void swap(int* a, int* b)
+{
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-void printArray(int *arr, int size) {
-    int *p = arr;
-    for(int i = 0; i < size; i++) {
-        printf("%d ", *p);
-        p++;
+void printArray(int* arr, int size)
+{
+    for (int i = 0; i < size; i++) {
+        std::cout << arr[i] << " ";
     }
-    printf("\n");
+    std::cout << std::endl;
 }
 
-void bubbleSort(int *arr, int size) {
-    for(int i = 0; i < size - 1; i++) {
-        for(int j = 0; j < size - i - 1; j++) {
-            if(*(arr + j) > *(arr + j + 1)) {
-                swap((arr + j), (arr + j + 1));
+void bubbleSort(int* arr, int size)
+{
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
             }
         }
     }
 }
 
-int main() {
+int main()
+{
     int size;
-    printf("Enter the number of elements: ");
-    scanf("%d", &size);
+    std::cout << "Enter the number of elements: ";
+    std::cin >> size;
 
-    int *arr = new int[size];
+    int* arr = new int[size];
 
-    for(int i = 0; i < size; i++) {
-        scanf("%d", (arr + i));
+    for (int i = 0; i < size; i++) {
+        std::cin >> arr[i];
     }
 
-    printf("The input array is:\n");
+    std::cout << "The input array is:\n";
     printArray(arr, size);
 
     bubbleSort(arr, size);
 
-    printf("The sorted array is:\n");
+    std::cout << "The sorted array is:\n";
     printArray(arr, size);
 
     delete[] arr;
