@@ -14,14 +14,19 @@ x = 3
 y = 4
 z = 5
 */
-#include <stdio.h>
+#include <iostream>
 
-int main() {
+int main()
+{
     int x, y, z;
-    printf("Enter three integers: ");
-    scanf("%d %d %d", &x, &y, &z);
-    printf("\nThe three integers are:\n");
-    printf("x = %d\n", *&x);
-    printf("y = %d\n", *&y);
-    printf("z = %d\n", *&z);
+
+    std::cout << "Enter three integers: ";
+    std::cin >> x >> y >> z;
+
+    std::cout << "\nThe three integers are:\n";
+    std::cout << "x = " << x << std::endl;
+    std::cout << "y = " << y << std::endl;
+    std::cout << "z = " << z << std::endl;
+
+    return 0;
 }

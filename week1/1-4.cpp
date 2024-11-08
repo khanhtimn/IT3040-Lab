@@ -10,25 +10,25 @@ Result
 cout << counteven(arr, 8);
 5
 */
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
 
-int counteven(int* ptr, int size)
+int countEven(int* ptr, int size)
 {
-    int total = 0;
+    int count = 0;
     for (int i = 0; i < size; ++i) {
-        if ((*(ptr + i) % 2) == 0)
-            ++total;
+        if (*(ptr + i) % 2 == 0) {
+            ++count;
+        }
     }
-    return total;
+    return count;
 }
 
 int main()
 {
     int arr[] = { 1, 5, 4, 8, 10, 6, 7, 2 };
     int size = sizeof(arr) / sizeof(arr[0]);
-    int result = counteven(arr, size);
+    int result = countEven(arr, size);
 
-    printf("Number of even numbers: %d\n", result);
+    std::cout << result << std::endl;
     return 0;
 }
