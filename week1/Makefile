@@ -15,7 +15,8 @@ else
 endif
 
 CC = $(COMPILER)
-CFLAGS = -std=c++17 -Wall -Wextra
+CFLAGS = -std=c++17 -Wall -Wextra -O3
+#Note the file descriptor when making new week
 SOURCES = $(wildcard [1]-*.cpp)
 EXECS = $(patsubst %.cpp,$(TARGET_DIR)$(DIRSEP)%$(EXE),$(SOURCES))
 
