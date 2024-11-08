@@ -13,10 +13,22 @@ cout << counteven(arr, 8);
 #include <stdio.h>
 #include <stdlib.h>
 
-int counteven(int* ptr, int size) {
+int counteven(int* ptr, int size)
+{
     int total = 0;
-    for(int i = 0; i < size; ++i) {
-        if ((*(ptr + i) % 2) == 0) ++total;
+    for (int i = 0; i < size; ++i) {
+        if ((*(ptr + i) % 2) == 0)
+            ++total;
     }
     return total;
+}
+
+int main()
+{
+    int arr[] = { 1, 5, 4, 8, 10, 6, 7, 2 };
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int result = counteven(arr, size);
+
+    printf("Number of even numbers: %d\n", result);
+    return 0;
 }

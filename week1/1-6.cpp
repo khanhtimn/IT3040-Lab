@@ -33,7 +33,10 @@ for(int i = 0; i < 4; i++) cout << arr2[i] << " ";
 Result
 5 2 6 5 3 9 9 5 -1 4
 */
-void reversearray(int arr[], int size) {
+#include <iostream>
+
+void reversearray(int arr[], int size)
+{
     int l = 0, r = size - 1, tmp;
     while (l < r) {
         tmp = arr[l];
@@ -45,7 +48,8 @@ void reversearray(int arr[], int size) {
     }
 }
 
-void ptr_reversearray(int *arr, int size) {
+void ptr_reversearray(int* arr, int size)
+{
     int l = 0, r = size - 1, tmp;
     while (l < r) {
         tmp = *(arr + l);
@@ -55,4 +59,28 @@ void ptr_reversearray(int *arr, int size) {
         l++;
         r--;
     }
+}
+int main()
+{
+    int arr[] = { 9, 3, 5, 6, 2, 5 };
+    int size1 = sizeof(arr) / sizeof(arr[0]);
+
+    reversearray(arr, size1);
+    std::cout << "Reversed array using indices: ";
+    for (int i = 0; i < size1; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+
+    int arr2[] = { 4, -1, 5, 9 };
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    ptr_reversearray(arr2, size2);
+    std::cout << "Reversed array using pointers: ";
+    for (int i = 0; i < size2; i++) {
+        std::cout << arr2[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
 }
