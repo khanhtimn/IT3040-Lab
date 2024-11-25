@@ -59,7 +59,7 @@ void FFT(vector<complex<double>>& a, bool inv)
     complex<double> w(1);
     complex<double> wn(cos(ang), sin(ang));
 
-    for (int i = 0; 2 * i < n; i++) {
+    for (unsigned int i = 0; 2 * i < n; i++) {
         a[i] = a_even[i] + w * a_odd[i];
         a[i + n / 2] = a_even[i] - w * a_odd[i];
         if (inv) {
@@ -74,7 +74,7 @@ vector<int> multiply(vector<int> const& A, vector<int> const& B)
 {
     vector<complex<double>> fa(A.begin(), A.end()), fb(B.begin(), B.end());
 
-    int n = 1;
+    unsigned int n = 1;
 
     while (n < A.size() + B.size())
         n <<= 1;
@@ -85,14 +85,14 @@ vector<int> multiply(vector<int> const& A, vector<int> const& B)
     FFT(fa, false);
     FFT(fb, false);
 
-    for (int i = 0; i < n; i++)
+    for (unsigned int i = 0; i < n; i++)
         fa[i] *= fb[i];
 
     FFT(fa, true);
 
     vector<int> result(n);
 
-    for (int i = 0; i < n; i++)
+    for (unsigned int i = 0; i < n; i++)
         result[i] = round(fa[i].real());
 
     return result;
@@ -117,7 +117,7 @@ int main()
     vector<int> C = multiply(A, B);
 
     int result = 0;
-    for (int i = 0; i < C.size(); i++) {
+    for (unsigned int i = 0; i < C.size(); i++) {
         result ^= C[i];
     }
 
