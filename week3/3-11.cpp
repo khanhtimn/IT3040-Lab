@@ -38,85 +38,104 @@ Kết quả mẫu:
 0
 7
 */
-// TODO: Needs input santitation
 #include <climits>
 #include <iostream>
 #include <sstream>
 #include <vector>
 using namespace std;
 
-const int MAX = 20;
-int n, r, price[MAX][MAX];
-int x[MAX], best, sum_price, start, des, numOfPoint;
+const int MAX = 10000;
+int n, r;
+int price[MAX][MAX];
+int x[MAX];
 bool visited[MAX];
 vector<int> vt;
-
-inline void inputData()
+int min_price;
+int sum_price;
+int start, destination, numberOfPoint;
+void input()
 {
     cin >> n >> r;
     for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < n; j++) {
             cin >> price[i][j];
+        }
 }
 
-inline bool check(int a, int i)
+bool check(int a, int i)
 {
-    return !visited[vt[i]] && price[x[a - 1]][vt[i]];
+    if (visited[vt[i]])
+        return false;
+    if (price[x[a - 1]][vt[i]] == 0)
+        return false;
+    return true;
 }
 
-inline void solution()
+void solution()
 {
-    if (price[x[numOfPoint - 2]][des])
-        best = min(best, sum_price + price[x[numOfPoint - 2]][des]);
+    if (price[x[numberOfPoint - 2]][destination] == 0)
+        return;
+    min_price = min(min_price, sum_price + price[x[numberOfPoint - 2]][destination]);
 }
 
-void TRY(int k)
+void TRY(int a)
 {
-    for (int i = 1; i < numOfPoint - 1; i++) {
-        if (check(k, i)) {
+    for (int i = 1; i < numberOfPoint - 1; i++) {
+        if (check(a, i)) {
             visited[vt[i]] = true;
-            sum_price += price[x[k - 1]][vt[i]];
-            x[k] = vt[i];
+            sum_price += price[x[a - 1]][vt[i]];
 
-            if (k == numOfPoint - 2)
+            x[a] = vt[i];
+            if (a == numberOfPoint - 2)
                 solution();
             else
-                TRY(k + 1);
+                TRY(a + 1);
 
             visited[vt[i]] = false;
-            sum_price -= price[x[k - 1]][vt[i]];
+            sum_price -= price[x[a - 1]][vt[i]];
         }
     }
 }
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-
     string str;
-    inputData();
-    cin.ignore();
-
-    while (r--) {
-        best = INT_MAX;
+    input();
+    getline(cin, str);
+    vector<int> result;
+    while (r > 0) {
+        min_price = INT_MAX;
         sum_price = 0;
-        vt.clear();
-
         getline(cin, str);
-        stringstream ss(str);
-        int tmp;
-        while (ss >> tmp)
+        while (!str.empty()) {
+            stringstream convert(str.substr(0, str.find(" ")));
+            int tmp = 0;
+            convert >> tmp;
             vt.push_back(tmp - 1);
 
-        start = vt.front();
-        des = vt.back();
-        numOfPoint = vt.size();
+            if (str.find(" ") > str.size()) {
+                break;
+            } else {
+                str.erase(0, str.find(" ") + 1);
+            }
+        }
+        start = vt[0];
+        destination = vt[vt.size() - 1];
+        numberOfPoint = vt.size();
         x[0] = start;
-        x[numOfPoint - 1] = des;
-        fill(visited, visited + n, false);
-
+        x[numberOfPoint - 1] = destination;
+        for (int i = 0; i < n; i++)
+            visited[i] = false;
         TRY(1);
-        cout << (best == INT_MAX ? 0 : best) << '\n';
+        result.push_back(min_price);
+        vt.erase(vt.begin(), vt.end());
+        r--;
+    }
+    for (int num : result) {
+        if (num == INT_MAX) {
+            cout << "0" << endl;
+        } else {
+            cout << num << endl;
+        }
     }
 }
