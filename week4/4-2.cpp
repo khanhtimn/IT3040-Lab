@@ -13,6 +13,7 @@ trong đó, Point là kiểu được định nghĩa trước trong trình chấ
 using Point = pair<double, double>;
 
 */
+
 #include <cmath>
 #include <iomanip>
 #include <iostream>
@@ -22,7 +23,10 @@ using Point = std::pair<double, double>;
 
 double area(Point a, Point b, Point c)
 {
-    return fabs(a.first * (b.second - c.second) + b.first * (c.second - a.second) + c.first * (a.second - b.second)) / 2;
+    return fabs(a.first * (b.second - c.second)
+               + b.first * (c.second - a.second)
+               + c.first * (a.second - b.second))
+        / 2;
 }
 
 int main()

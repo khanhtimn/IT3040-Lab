@@ -7,6 +7,7 @@ Thêm một phần tử vào đầu danh sách liên kết
 In danh sách
 Đảo ngược danh sách liên kết (yêu cầu độ phức tạp thời gian O(N) và chi phí bộ nhớ dùng thêm O(1))
 */
+
 #include <iostream>
 struct Node {
     int data;
