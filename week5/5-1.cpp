@@ -1,3 +1,6 @@
+/*
+Đoạn code sau liệt kê tất cả các hoán vị n số. Hãy tìm và sửa các lỗi cú pháp như hướng dẫn ở trên.
+*/
 #include <stdio.h>
 int x[100], mark[100], n;
 void print()

@@ -1,3 +1,8 @@
+/*
+Bài toán cái túi: Cho một cái túi có sức chứa và đồ vật. Đồ vật thứ có khối lượng và giá trị.
+Cần chọn ra một số đồ vật để bỏ vào túi sao cho tổng khối lượng không quá và tổng giá trị là lớn nhất có thể.
+Đoạn code sau đây giải bài toán cái túi bằng phương pháp duyệt nhánh cận. Hãy tìm và sửa các lỗi cú pháp
+*/
 #include <iostream>
 using namespace std;
 int n, M, m[100], v[100];

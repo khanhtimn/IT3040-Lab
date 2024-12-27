@@ -1,3 +1,25 @@
+/*
+H. PARENTHESES
+- time limit per test: 1 second
+- memory limit per test: 256 megabytes
+
+The input file consists of several datasets.
+The first line of the input file contains the number of datasets which is a positive integer T and is not greater than 1000.
+Each of T following lines describes a parentheses expression including: '(',')','[',']','{','}'.
+
+Output
+For each dataset, write in one line 1 or 0 if the expression is correct or not respectively.
+
+Example
+Input
+2
+([]())
+()()()[}
+Output
+1
+0
+*/
+
 #include <iostream>
 using namespace std;
 #include <stack>
